@@ -1,15 +1,16 @@
 package com.calc4group.logic;
 
 import com.calc4group.dao.Member;
+import com.calc4group.dao.ShareTypeEnum;
 
 public class MemberQuota {
 
 
-    private ParticipationType type;
+    private ShareTypeEnum type;
     private Member member;
     private Double value;
 
-    public MemberQuota(ParticipationType type, Member member, Double value) {
+    public MemberQuota(ShareTypeEnum type, Member member, Double value) {
         this.type = type;
         this.member = member;
         this.value = value;
@@ -18,11 +19,11 @@ public class MemberQuota {
     //    public MemberQuota(ParticipationType equal, Member member, int i) {
 //    }
 
-    public ParticipationType getType() {
+    public ShareTypeEnum getType() {
         return type;
     }
 
-    public void setType(ParticipationType type) {
+    public void setType(ShareTypeEnum type) {
         this.type = type;
     }
 

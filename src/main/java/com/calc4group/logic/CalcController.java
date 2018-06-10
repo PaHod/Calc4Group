@@ -7,6 +7,8 @@ import com.calc4group.dao.Member;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.calc4group.dao.ShareTypeEnum.EQUAL;
+
 public class CalcController {
 
     private GroupEvent groupEvent;
@@ -37,7 +39,7 @@ public class CalcController {
             Expense exp = createExp();
             for (int i = 0; i < groupEvent.getMembers().size(); i++) {
                 Member member = groupEvent.getMembers().get(i);
-                MemberQuota memberQuota = new MemberQuota(ParticipationType.EQUAL, member, 0d);
+                MemberQuota memberQuota = new MemberQuota(EQUAL, member, 0d);
                 exp.getForWhom().add(memberQuota);
             }
             exp.setAmount((double) (k * 10));

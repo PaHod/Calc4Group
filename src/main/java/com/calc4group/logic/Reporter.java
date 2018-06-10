@@ -3,12 +3,14 @@ package com.calc4group.logic;
 import com.calc4group.dao.Expense;
 import com.calc4group.dao.GroupEvent;
 import com.calc4group.dao.Member;
+import com.calc4group.dao.ShareTypeEnum;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.calc4group.logic.ParticipationType.*;
+import static com.calc4group.dao.ShareTypeEnum.*;
+
 
 public class Reporter {
     private GroupEvent groupEvent;
@@ -33,7 +35,7 @@ public class Reporter {
             double expenseAmount = expense.getAmount();
             List<MemberQuota> forWhomList = expense.getForWhom();
             for (MemberQuota memberQuota : forWhomList) {
-                ParticipationType type = memberQuota.getType();
+                ShareTypeEnum type = memberQuota.getType();
                 if (EQUAL.equals(type)) {
                     double quota = -expenseAmount / forWhomList.size();
                     addAmountPerMwmber(memberQuota.getMember(), quota);
