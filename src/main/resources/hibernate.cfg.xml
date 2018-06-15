@@ -4,17 +4,17 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!--<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>-->
         <property name="connection.url">jdbc:mysql://localhost:3306/calc4group</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
          <property name="connection.username">root</property>
-         <property name="connection.password">root</property>
+         <property name="connection.password">Qwerty123</property>
         <!-- DB schema will be updated if needed -->
-        <!-- <property name="hbm2ddl.auto">update</property> -->
+        <!--<property name="hbm2ddl.auto">update</property>-->
 
-        <!--<mapping class="com.calc4group.dao.ExpenseParticipantsEntity"/>-->
-        <!--<mapping class="com.calc4group.dao.ExpensesEntity"/>-->
-        <!--<mapping class="com.calc4group.dao.GroupEventsEntity"/>-->
-        <!--<mapping class="com.calc4group.dao.UsersEntity"/>-->
+        <!--<mapping class="com.calc4group.entities.ExpenseParticipant"/>-->
+        <!--<mapping class="com.calc4group.entities.Expense"/>-->
+        <mapping class="com.calc4group.entities.GroupEvent"/>
+        <mapping class="com.calc4group.entities.User"/>
     </session-factory>
 </hibernate-configuration>

@@ -1,15 +1,21 @@
-package com.calc4group.dao;
+package com.calc4group.entities;
+
+import com.calc4group.dao.ShareTypeEnum;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "expense_participants", schema = "calc4group", catalog = "")
-public class ExpenseParticipantsEntity {
+@Table(name = "expense_participant", schema = "calc4group")
+public class ExpenseParticipant {
     private Integer expense_participant_id;
     private int paidFor;
     private ShareTypeEnum shareType;
     private String amount;
     private Integer expenseId;
+
+    public void setPaidFor(Integer paidFor) {
+        this.paidFor = paidFor;
+    }
 
     @Id
     public Integer getExpense_participant_id() {
@@ -21,7 +27,7 @@ public class ExpenseParticipantsEntity {
     }
 
     @Basic
-    @Column(name = "paid_for", nullable = false)
+    @Column(name = "paidFor", nullable = false)
     public int getPaidFor() {
         return paidFor;
     }
@@ -31,7 +37,7 @@ public class ExpenseParticipantsEntity {
     }
 
     @Basic
-    @Column(name = "share_type", nullable = true)
+    @Column(name = "shareType")
     public ShareTypeEnum getShareType() {
         return shareType;
     }
@@ -51,7 +57,7 @@ public class ExpenseParticipantsEntity {
     }
 
     @Basic
-    @Column(name = "expense_id", nullable = true)
+    @Column(name = "expenseId")
     public Integer getExpenseId() {
         return expenseId;
     }
@@ -65,7 +71,7 @@ public class ExpenseParticipantsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ExpenseParticipantsEntity that = (ExpenseParticipantsEntity) o;
+        ExpenseParticipant that = (ExpenseParticipant) o;
 
         if (paidFor != that.paidFor) return false;
         if (shareType != that.shareType) return false;
@@ -84,5 +90,14 @@ public class ExpenseParticipantsEntity {
         return result;
     }
 
-
+    @Override
+    public String toString() {
+        return "ExpenseParticipant{" +
+                "expense_participant_id=" + expense_participant_id +
+                ", paidFor=" + paidFor +
+                ", shareType=" + shareType +
+                ", amount='" + amount + '\'' +
+                ", expenseId=" + expenseId +
+                '}';
+    }
 }

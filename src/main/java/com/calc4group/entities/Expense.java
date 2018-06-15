@@ -1,19 +1,23 @@
-package com.calc4group.dao;
+package com.calc4group.entities;
 
 import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "expenses", schema = "calc4group", catalog = "")
-public class ExpensesEntity {
+@Table(name = "expense", schema = "calc4group")
+public class Expense {
     private int expenseId;
     private Integer createdBy;
     private Integer paidBy;
     private Date createDate;
     private Integer resolved;
 
+    public void setExpenseId(Integer expenseId) {
+        this.expenseId = expenseId;
+    }
+
     @Id
-    @Column(name = "expense_id", nullable = false)
+    @Column(name = "expenseId", nullable = false)
     public int getExpenseId() {
         return expenseId;
     }
@@ -23,7 +27,7 @@ public class ExpensesEntity {
     }
 
     @Basic
-    @Column(name = "created_by", nullable = true)
+    @Column(name = "createdBy")
     public Integer getCreatedBy() {
         return createdBy;
     }
@@ -33,7 +37,7 @@ public class ExpensesEntity {
     }
 
     @Basic
-    @Column(name = "paid_by", nullable = true)
+    @Column(name = "paidBy")
     public Integer getPaidBy() {
         return paidBy;
     }
@@ -43,7 +47,7 @@ public class ExpensesEntity {
     }
 
     @Basic
-    @Column(name = "create_date", nullable = true)
+    @Column(name = "createDate")
     public Date getCreateDate() {
         return createDate;
     }
@@ -53,7 +57,7 @@ public class ExpensesEntity {
     }
 
     @Basic
-    @Column(name = "resolved", nullable = true)
+    @Column(name = "resolved")
     public Integer getResolved() {
         return resolved;
     }
@@ -67,7 +71,7 @@ public class ExpensesEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ExpensesEntity that = (ExpensesEntity) o;
+        Expense that = (Expense) o;
 
         if (expenseId != that.expenseId) return false;
         if (createdBy != null ? !createdBy.equals(that.createdBy) : that.createdBy != null) return false;
@@ -86,5 +90,16 @@ public class ExpensesEntity {
         result = 31 * result + (createDate != null ? createDate.hashCode() : 0);
         result = 31 * result + (resolved != null ? resolved.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Expense{" +
+                "expenseId=" + expenseId +
+                ", createdBy=" + createdBy +
+                ", paidBy=" + paidBy +
+                ", createDate=" + createDate +
+                ", resolved=" + resolved +
+                '}';
     }
 }

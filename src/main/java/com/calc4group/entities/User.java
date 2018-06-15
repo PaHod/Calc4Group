@@ -1,17 +1,21 @@
-package com.calc4group.dao;
+package com.calc4group.entities;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users", schema = "calc4group", catalog = "")
-public class UsersEntity {
+@Table(name = "user", schema = "calc4group")
+public class User {
     private int userId;
     private String username;
     private String password;
     private String email;
 
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     @Id
-    @Column(name = "user_id", nullable = false)
+    @Column(nullable = false)
     public int getUserId() {
         return userId;
     }
@@ -21,7 +25,7 @@ public class UsersEntity {
     }
 
     @Basic
-    @Column(name = "username", nullable = false, length = 25)
+    @Column(nullable = false, length = 25)
     public String getUsername() {
         return username;
     }
@@ -31,7 +35,7 @@ public class UsersEntity {
     }
 
     @Basic
-    @Column(name = "password", nullable = true, length = 25)
+    @Column(length = 25)
     public String getPassword() {
         return password;
     }
@@ -53,9 +57,9 @@ public class UsersEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if ((o == null) || (getClass() != o.getClass())) return false;
 
-        UsersEntity that = (UsersEntity) o;
+        User that = (User) o;
 
         if (userId != that.userId) return false;
         if (username != null ? !username.equals(that.username) : that.username != null) return false;
@@ -72,5 +76,15 @@ public class UsersEntity {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

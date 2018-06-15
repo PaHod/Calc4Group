@@ -1,37 +1,24 @@
 package com.calc4group.main;
 
-import com.calc4group.dao.UsersEntity;
-import com.calc4group.utils.HibernateSessionFactory;
-import org.hibernate.Session;
+import com.calc4group.controllers.EntityController;
 
 public class Main {
     public static void main(String[] args) {
 
-
-        Session session = HibernateSessionFactory.getSessionFactory().openSession();
-
-        session.beginTransaction();
-
-        UsersEntity usersEntity = new UsersEntity();
-        usersEntity.setUsername("PaHod");
-        usersEntity.setEmail("pahod@pahod.net");
-        usersEntity.setPassword("1234");
-
-        session.save(usersEntity);
-        session.getTransaction().commit();
-        session.close();
+        EntityController entityController = new EntityController();
+        entityController.addUser("PaHod", "pahod@pahod.net", "1234");
+        entityController.addUser("PaHod1", "pahod1@pahod.net", "1234");
+        entityController.addUser("PaHod2", "pahod2@pahod.net", "2234");
+        entityController.addUser("PaHod3", "pahod3@pahod.net", "3234");
 
 
-//        Member mainMember = new Member();
-//        mainMember.setId(0);
-//        mainMember.setName("PaHod");
-//        mainMember.setEmail("pahod@pahod.net");
-//
-//        CalcController calcController = new CalcController(mainMember);
-//        calcController.createGroup("Georgia");
-//
-//        Reporter reporter = new Reporter(calcController.getGroupEvent());
-//        reporter.calculate();
+
+        entityController.addGroup("Borzhava2018");
+
+        entityController.addUserByNameToGroupByName("PaHod", "Borzhava2018");
+
+
+
 
 
     }
