@@ -1,40 +1,56 @@
-
-CREATE TABLE expense_participants
+create table expense
 (
-  paid_for   INT                                                      NOT NULL,
-  share_type ENUM ('equal', 'amount', 'percente', 'equal_and_amount') NULL,
-  amount     MEDIUMTEXT                                               NOT NULL,
-  expense_id INT                                                      NULL
+  expenseId int auto_increment
+    primary key,
+  createdBy int null,
+  paidBy int null,
+  createDate date null,
+  resolved int null
 )
-  ENGINE = InnoDB;
+  engine=InnoDB
+;
 
-CREATE TABLE expenses
+create table expense_participant
 (
-  expense_id  INT AUTO_INCREMENT
-    PRIMARY KEY,
-  created_by  INT  NULL,
-  paid_by     INT  NULL,
-  create_date DATE NULL,
-  resolved    INT  NULL
+  paidFor int not null,
+  shareType enum('equal', 'amount', 'percente', 'equal_and_amount') null,
+  amount mediumtext not null,
+  expenseId int null
 )
-  ENGINE = InnoDB;
+  engine=InnoDB
+;
 
-CREATE TABLE group_events
+create table group_event
 (
-  group_id   INT AUTO_INCREMENT
-    PRIMARY KEY,
-  group_name VARCHAR(25) NULL
+  groupId int auto_increment
+    primary key,
+  groupName varchar(25) null,
+  constraint groupId_UNIQUE
+  unique (groupId)
 )
-  ENGINE = InnoDB;
+  engine=InnoDB
+;
 
-CREATE TABLE users
+create table group_users
 (
-  user_id  INT AUTO_INCREMENT
-    PRIMARY KEY,
-  username VARCHAR(25) NOT NULL,
-  password VARCHAR(25) NULL,
-  email    VARCHAR(45) NULL
+  groupId int not null,
+  userId int not null
 )
-  ENGINE = InnoDB;
+  engine=InnoDB
+;
 
+create table user
+(
+  userId int auto_increment
+    primary key,
+  username varchar(25) not null,
+  password varchar(25) null,
+  email varchar(45) null,
+  constraint userId_UNIQUE
+  unique (userId),
+  constraint username_UNIQUE
+  unique (username)
+)
+  engine=InnoDB
+;
 
