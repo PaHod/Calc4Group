@@ -10,6 +10,7 @@ public class Main {
         entityController.addUser("PaHod1", "pahod1@pahod.net", "1234");
         entityController.addUser("PaHod2", "pahod2@pahod.net", "2234");
         entityController.addUser("PaHod3", "pahod3@pahod.net", "3234");
+        entityController.addUser("PaHod4", "pahod4@pahod.net", "3234");
 
 
 
