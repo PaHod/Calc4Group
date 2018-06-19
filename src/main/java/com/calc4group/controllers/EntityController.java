@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 public class EntityController {
@@ -34,11 +35,13 @@ public class EntityController {
     }
 
     private void saveToDataBase(Object obj) {
-        Session session = getSession();
-        Transaction transaction = session.beginTransaction();
-        session.save(obj);
-        transaction.commit();
-        session.close();
+        try (Session session = getSession()) {
+            Transaction transaction = session.beginTransaction();
+            session.save(obj);
+            transaction.commit();
+        } catch (Exception e) {
+            System.out.println("duplicate of Name");
+        }
     }
 
     private Session getSession() {
@@ -48,8 +51,9 @@ public class EntityController {
     public boolean addUserByNameToGroupByName(String userName, String groupName) {
         User userByName = getUserByName(userName);
         GroupEvent groupByName = getGroupByName(groupName);
+        GroupEvent groupById = getGroupById(groupByName.getGroupId());
 
-        System.out.println("user " + getUserByName(userName) + " and group " + getGroupByName(groupName));
+        System.out.println("user " + userByName + " and group " + groupByName);
         return false;
     }
 
@@ -59,6 +63,20 @@ public class EntityController {
         List list = query.list();
 //        session.getTransaction().commit();
         session.close();
+        System.out.println("found groups" + list.size());
+        if (!list.isEmpty()) {
+            return ((GroupEvent) list.get(0));
+        }
+        return null;
+    }
+
+    private GroupEvent getGroupById(Integer id) {
+        Session session = getSession();
+        Query query = session.createQuery("from GroupEvent where groupId = '" + id + "'");
+        List list = query.list();
+//        session.getTransaction().commit();
+        session.close();
+        System.out.println("found groups" + list.size());
         if (!list.isEmpty() && (list.size() == 1)) {
             return ((GroupEvent) list.get(0));
         }
