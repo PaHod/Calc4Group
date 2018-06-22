@@ -8,10 +8,6 @@ public class GroupEvent {
     private int groupId;
     private String groupName;
 
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
-    }
-
     @Id
     @Column(name = "groupId", nullable = false)
     public int getGroupId() {

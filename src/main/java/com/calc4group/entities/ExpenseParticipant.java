@@ -1,7 +1,5 @@
 package com.calc4group.entities;
 
-import com.calc4group.dao.ShareTypeEnum;
-
 import javax.persistence.*;
 
 @Entity

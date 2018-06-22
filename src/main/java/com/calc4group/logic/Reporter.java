@@ -1,13 +1,5 @@
 package com.calc4group.logic;
 
-import com.calc4group.dao.ShareTypeEnum;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import static com.calc4group.dao.ShareTypeEnum.*;
-
 
 public class Reporter {
 //    private GroupEvent groupEvent;

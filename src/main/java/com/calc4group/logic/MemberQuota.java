@@ -1,7 +1,5 @@
 package com.calc4group.logic;
 
-import com.calc4group.dao.ShareTypeEnum;
-
 public class MemberQuota {
 
 

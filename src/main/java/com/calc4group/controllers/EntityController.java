@@ -51,7 +51,12 @@ public class EntityController {
     public boolean addUserByNameToGroupByName(String userName, String groupName) {
         User userByName = getUserByName(userName);
         GroupEvent groupByName = getGroupByName(groupName);
-        GroupEvent groupById = getGroupById(groupByName.getGroupId());
+//        GroupEvent groupById = getGroupById(groupByName.getGroupId());
+
+
+        Session session = getSession();
+
+
 
         System.out.println("user " + userByName + " and group " + groupByName);
         return false;
