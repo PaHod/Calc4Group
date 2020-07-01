@@ -23,7 +23,7 @@
     <properties>
         <hibernate-version>5.0.1.Final</hibernate-version>
         <spring.framework.version>LATEST</spring.framework.version>
-        <mysql.jdbc.version>8.0.11</mysql.jdbc.version>
+        <mysql.jdbc.version>8.0.16</mysql.jdbc.version>
     </properties>
 
     <dependencies>
